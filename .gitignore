@@ -1,0 +1,6 @@
+# 全体を無視
+libs/
+db/
+
+.vscode/
+MEMO.md

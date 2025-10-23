@@ -1,0 +1,22 @@
+
+.card {
+  border: 1px solid #aaaaaa;
+  padding: 16px;
+  margin: 16px 0;
+  border-radius: 8px;
+  width: 30%;
+}
+
+
+header {
+  background-color: #f0f0f0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+}
+
+.nav {
+  display: flex;
+  gap: 20px;
+}
