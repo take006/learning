@@ -20,7 +20,7 @@ jobs:
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASS }}
           server-dir: ${{ secrets.FTP_TARGET_DIR }}
-          local-dir: ./
+          local-dir: holy-ohita-0184.sub.jp/learning/
           exclude: |
             **/.git*
             **/.github/**
