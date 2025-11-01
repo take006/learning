@@ -1,4 +1,4 @@
-name: Deploy to Lolipop via FTP
+name: Deploy to StarServer via FTP
 
 on:
   push:
@@ -20,9 +20,9 @@ jobs:
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASS }}
           server-dir: ${{ secrets.FTP_TARGET_DIR }}
-          local-dir: holy-ohita-0184.sub.jp/learning/
+          local-dir: ./
           exclude: |
-            **/.git*
+            **/.git**
             **/.github/**
             **/node_modules/**
             **/README.md
