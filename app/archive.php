@@ -1,8 +1,7 @@
 <?php
-require_once("db_connect.php"); // PDO接続ファイル
-
+require_once __DIR__ . '/../config/config.php';
 try {
-$pdo = new_PDO();
+$pdo = getPDO();
 $limit = 10;
 $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 $offset = ($page - 1) * $limit;

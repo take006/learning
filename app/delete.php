@@ -1,20 +1,10 @@
 <?php
 
-
-$host = 'localhost';
-$dbname = 'learning_db';
-$username = 'root';
-$password = '';
+require_once __DIR__ . '/../config/config.php';
 
 try {
-    $options = [
-    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-    PDO::ATTR_EMULATE_PREPARES => false
-  ];
-  $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf-8", $username, $password, $options);
 
-
+  $pdo = getPDO();
   $id = filter_input(INPUT_POST, "id", FILTER_VALIDATE_INT);
   if (!$id) {
       // idが無効な場合はエラーページへ

@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<?php require_once __DIR__ . '/../config/config.php';
+ ?>
+ <!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
