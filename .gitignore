@@ -1,3 +1,20 @@
+# 環境情報
+.env
+config/config.php
+
+# 依存ファイル
+vendor/
+node_modules/
+
+# OS固有
+.DS_Store
+Thumbs.db
+
+# ログ・キャッシュ
+*.log
+/tmp/
+cache/
+
 # 全体を無視
 libs/
 db/

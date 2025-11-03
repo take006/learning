@@ -1,8 +1,5 @@
 <?php
-$host = "localhost";
-$dbname = "learning_db";
-$username = "root";
-$password = "";
+  require_once __DIR__ . '/../config/config.php';
 
 try {
   $options = [
@@ -11,9 +8,9 @@ try {
     PDO::ATTR_EMULATE_PREPARES => false
   ];
 
-  $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password, $options);
-  
-  $sql = "SELECT id, post_date, category, comment
+
+$pdo = getPDO();  
+$sql = "SELECT id, post_date, category, comment
 FROM learning_history
 WHERE DATE(post_date) = CURDATE();
 ";
@@ -62,7 +59,7 @@ WHERE DATE(post_date) = CURDATE();
     <section id="main-wrapper" class="flex flex-col justify-center min-h-screen">
 
           <div>
-        <a href="newData.php"><button 
+        <a href="app/newData.php"><button 
                 class="text-white border border-green-700 bg-green-700 hover:bg-green-900 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-2 transition duration-150 ease-in-out">
                   新規作成
         </button></a>
