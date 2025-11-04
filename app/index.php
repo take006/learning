@@ -107,9 +107,9 @@ WHERE DATE(post_date) = CURDATE();
       <div class="p-10">
         <h2 class="text-lg font-bold mb-4">昨日</h2>
         <?php if (!empty($learning_yesterday)): ?>
-        <div class="grid grid-cols-3 gap-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           <div class="bg-white border border-gray-200 p-4 rounded-2xl shadow">
-              <ul class="mb-4">
+            <ul>
                 <li>ID：<?= htmlspecialchars($learning_yesterday['id'], ENT_QUOTES, 'UTF-8'); ?></li>
                 <li><?= htmlspecialchars($learning_yesterday['post_date'], ENT_QUOTES, 'UTF-8'); ?></li>
                 <li><?= htmlspecialchars($learning_yesterday['category'], ENT_QUOTES, 'UTF-8'); ?></li>
