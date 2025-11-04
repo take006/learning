@@ -38,30 +38,47 @@ try {
 <body>
   <?php include_once './header.php' ?>
   <main>
-    <section class="flex flex-col justify-center">
-    <div class="flex justify-center min-h-screen">
-      <h2>Edit</h2>
-      <form action="<?= BASE_URL ?>app/update.php" method="post" class="w-1/2">
+<section class="flex flex-col justify-center">
+  <div class="flex justify-center min-h-screen items-center px-4">
+    <div class="w-full md:w-2/3 lg:w-1/2 bg-white border border-gray-200 p-6 rounded-2xl shadow">
+      <h2 class="text-2xl font-bold mb-6 text-center text-gray-800">編集</h2>
+
+      <form action="<?= BASE_URL ?>app/update.php" method="post" class="flex flex-col">
         <input type="hidden" name="id" value="<?= htmlspecialchars($learning['id'], ENT_QUOTES, 'UTF-8'); ?>">
 
         <label for="post_date" class="block mb-2 text-sm font-medium text-gray-900">日付</label>
         <input type="date" id="post_date" name="post_date"
-  value="<?= htmlspecialchars(date('Y-m-d', strtotime($learning['post_date'])), ENT_QUOTES, 'UTF-8'); ?>"
-  class="border border-gray-300 w-full mb-4 p-2 rounded">
-        
-        <label for="category" class="block mb-2 text-sm font-medium text-gray-900">category</label>  
-        <input type="text" id="category" name="category" 
-          value="<?= htmlspecialchars($learning['category'], ENT_QUOTES, 'UTF-8'); ?>" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 mb-4">
+          value="<?= htmlspecialchars(date('Y-m-d', strtotime($learning['post_date'])), ENT_QUOTES, 'UTF-8'); ?>"
+          class="border border-gray-300 w-full mb-4 p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-300">
 
-        <label for="comment" class="block mb-2 text-sm font-medium text-gray-900">comment</label>
-        <textarea id="comment" name="comment" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 mb-4 min-h-[250px]"><?= htmlspecialchars($learning['comment'], ENT_QUOTES, 'UTF-8'); ?></textarea>
-        <button class="text-gray-700 hover:text-white border border-gray-700 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-4 py-2">
-        <a href="index.php">戻る</a>
-        </button>
-        <button type="submit" class="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">更新</button>
+        <label for="category" class="block mb-2 text-sm font-medium text-gray-900">カテゴリー</label>  
+        <input type="text" id="category" name="category" 
+          value="<?= htmlspecialchars($learning['category'], ENT_QUOTES, 'UTF-8'); ?>" 
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 mb-4 focus:outline-none focus:ring-2 focus:ring-blue-300">
+
+        <label for="comment" class="block mb-2 text-sm font-medium text-gray-900">コメント</label>
+        <textarea id="comment" name="comment"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 mb-6 min-h-[200px] focus:outline-none focus:ring-2 focus:ring-blue-300"><?= htmlspecialchars($learning['comment'], ENT_QUOTES, 'UTF-8'); ?></textarea>
+
+        <!-- ボタンエリア -->
+        <div class="flex flex-col sm:flex-row justify-center items-center gap-3 sm:gap-6">
+          <!-- 戻るボタン -->
+          <a href="<?= BASE_URL ?>" 
+             class="inline-block text-center w-full sm:w-40 bg-white text-blue-600 border border-blue-600 hover:opacity-75 focus:ring-2 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 transition duration-150 ease-in-out">
+            戻る
+          </a>
+
+          <!-- 更新ボタン -->
+          <button type="submit"
+            class="w-full sm:w-40 text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:from-purple-700 hover:to-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center transition duration-150 ease-in-out">
+            更新
+          </button>
+        </div>
       </form>
     </div>
-    </section>
+  </div>
+</section>
+
   </main>
 </body>
 </html>
