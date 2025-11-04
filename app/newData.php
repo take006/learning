@@ -17,7 +17,7 @@
       <!-- 新規作成フォーム -->
       <div class="p-10">
         <div class="w-1/2 flex flex-col justify-center border border-gray-200 p-6 my-4 rounded-2xl shadow">
-          <form action="./create.php" method="post">
+          <form action="<?= BASE_URL ?>app/create.php" method="post">
             <h2 class="text-lg font-bold mb-4">新規作成</h2>
 
             <label for="post_date" class="block mb-2 text-sm font-medium text-gray-900">日付</label>

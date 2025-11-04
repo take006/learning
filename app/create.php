@@ -29,7 +29,7 @@ if(mb_strlen($comment) > 255){
   exit();
 }
 
-$pdo = getPDO();
+
 try {
  $pdo = getPDO();
   // idは自動採番なので指定しない

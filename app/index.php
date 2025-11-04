@@ -72,7 +72,7 @@ WHERE DATE(post_date) = CURDATE();
         <!-- grid-colsをレスポンシブ化 -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           <div class="bg-white border border-gray-200 p-4 rounded-2xl shadow">
-            <ul class="mb-4">
+            <ul>
               <li>ID：<?= htmlspecialchars($record_today['id'], ENT_QUOTES, 'UTF-8'); ?></li>
               <li><?= htmlspecialchars($record_today['post_date'], ENT_QUOTES, 'UTF-8'); ?></li>
               <li><?= htmlspecialchars($record_today['category'], ENT_QUOTES, 'UTF-8'); ?></li>
@@ -117,7 +117,7 @@ WHERE DATE(post_date) = CURDATE();
               </ul>
 
               <!-- 編集フォーム -->
-              <form action="./edit.php" method="get" class="inline-block">
+              <form action="<?= BASE_URL ?>app/edit.php" method="get" class="inline-block">
                 <input type="hidden" name="id" value="<?= htmlspecialchars($learning_yesterday['id'], ENT_QUOTES, 'UTF-8'); ?>" placeholder="input comment or comment">
                 <button type="submit" 
                         class="text-purple-700 hover:text-white border border-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-sm px-4 py-2">
@@ -126,7 +126,7 @@ WHERE DATE(post_date) = CURDATE();
               </form>
 
               <!-- 削除フォーム -->
-              <form action="./delete.php" method="post" class="inline-block" 
+              <form action="<?= BASE_URL ?>app/delete.php" method="post" class="inline-block" 
                     onsubmit="return confirm('本当に削除しますか？');">
                 <input type="hidden" name="id" value="<?= htmlspecialchars($learning_yesterday['id'], ENT_QUOTES, 'UTF-8'); ?>">
                 <button type="submit" 
@@ -156,7 +156,7 @@ WHERE DATE(post_date) = CURDATE();
               </ul>
 
               <!-- 編集フォーム -->
-              <form action="./edit.php" method="get" class="inline-block">
+              <form action="<?= BASE_URL ?>app/edit.php" method="get" class="inline-block">
                 <input type="hidden" name="id" value="<?= htmlspecialchars($weekly_record['id'], ENT_QUOTES, 'UTF-8'); ?>">
                 <button type="submit" 
                         class="text-purple-700 hover:text-white border border-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-sm px-4 py-2">
@@ -165,7 +165,7 @@ WHERE DATE(post_date) = CURDATE();
               </form>
 
               <!-- 削除フォーム -->
-              <form action="./delete.php" method="post" class="inline-block" 
+              <form action="<?= BASE_URL ?>app/delete.php" method="post" class="inline-block" 
                     onsubmit="return confirm('本当に削除しますか？');">
                 <input type="hidden" name="id" value="<?= htmlspecialchars($weekly_record['id'], ENT_QUOTES, 'UTF-8'); ?>">
                 <button type="submit" 
