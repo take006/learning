@@ -59,7 +59,7 @@ $total_pages = ceil($total / $limit);
               </ul>
 
               <!-- 編集フォーム -->
-              <form action="./edit.php" method="get" class="inline-block">
+              <form action="<?= BASE_URL ?>app/edit.php" method="get" class="inline-block">
                 <input type="hidden" name="id" value="<?= htmlspecialchars($record['id'], ENT_QUOTES, 'UTF-8'); ?>">
                 <button type="submit" 
                         class="text-purple-700 hover:text-white border border-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-sm px-4 py-2">
@@ -68,7 +68,7 @@ $total_pages = ceil($total / $limit);
               </form>
 
               <!-- 削除フォーム -->
-              <form action="./delete.php" method="post" class="inline-block" 
+              <form action="<?= BASE_URL ?>app/delete.php" method="post" class="inline-block" 
                     onsubmit="return confirm('本当に削除しますか？');">
                 <input type="hidden" name="id" value="<?= htmlspecialchars($record['id'], ENT_QUOTES, 'UTF-8'); ?>">
                 <button type="submit" 
