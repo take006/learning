@@ -29,21 +29,9 @@ if(mb_strlen($comment) > 255){
   exit();
 }
 
-
-  $host = "localhost";
-  $dbname = "learning_db";
-  $username = "root";
-  $password = "";
-
+$pdo = getPDO();
 try {
-  $options = [
-    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-    PDO::ATTR_EMULATE_PREPARES => false
-  ];
-
-  $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password, $options);
-
+ $pdo = getPDO();
   // idは自動採番なので指定しない
   $sql = "INSERT INTO learning_history (post_date, category, comment ) VALUES (:post_date, :category, :comment) ";
   $ps = $pdo->prepare($sql);

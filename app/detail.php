@@ -13,9 +13,9 @@ require_once __DIR__ . '/../config/config.php';
     exit();
   }
 
-  $pdo = getPDO();
+
   try {
-  
+    $pdo = getPDO();
   $sql = "select id, post_date, category, comment from learning_history where id = :id";
   $ps = $pdo->prepare($sql);
   $ps->bindValue(":id", $id, PDO::PARAM_INT);
