@@ -59,49 +59,48 @@ WHERE DATE(post_date) = CURDATE();
     <section id="main-wrapper" class="flex flex-col justify-center min-h-screen">
 
           <div>
-        <a href="app/newData.php"><button 
+        <a href="<?= BASE_URL ?>app/newData.php"><button 
                 class="text-white border border-green-700 bg-green-700 hover:bg-green-900 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-2 transition duration-150 ease-in-out">
                   新規作成
         </button></a>
       </div>
       
-                  <!-- 学習記録一覧 -->
+      <!-- 今日 -->
       <div class="p-10">
         <h2 class="text-lg font-bold mb-4">today</h2>
         <?php if (!empty($record_today)): ?>
-        <div class="grid grid-cols-3 gap-4">
+        <!-- grid-colsをレスポンシブ化 -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           <div class="bg-white border border-gray-200 p-4 rounded-2xl shadow">
-              <ul class="mb-4">
-                <li>ID：<?= htmlspecialchars($record_today['id'], ENT_QUOTES, 'UTF-8'); ?></li>
-                <li><?= htmlspecialchars($record_today['post_date'], ENT_QUOTES, 'UTF-8'); ?></li>
-                <li><?= htmlspecialchars($record_today['category'], ENT_QUOTES, 'UTF-8'); ?></li>
-                <li><?= nl2br(htmlspecialchars($record_today['comment'], ENT_QUOTES, 'UTF-8')); ?></li>
-              </ul>
+            <ul class="mb-4">
+              <li>ID：<?= htmlspecialchars($record_today['id'], ENT_QUOTES, 'UTF-8'); ?></li>
+              <li><?= htmlspecialchars($record_today['post_date'], ENT_QUOTES, 'UTF-8'); ?></li>
+              <li><?= htmlspecialchars($record_today['category'], ENT_QUOTES, 'UTF-8'); ?></li>
+              <li><?= nl2br(htmlspecialchars($record_today['comment'], ENT_QUOTES, 'UTF-8')); ?></li>
+            </ul>
+            <!-- 編集フォーム -->
+            <form action="<?= BASE_URL ?>app/edit.php" method="get" class="inline-block">
+              <input type="hidden" name="id" value="<?= htmlspecialchars($record_today['id'], ENT_QUOTES, 'UTF-8'); ?>" placeholder="input comment or comment">
+              <button type="submit" 
+                      class="text-purple-700 hover:text-white border border-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-sm px-4 py-2">
+                編集
+              </button>
+            </form>
 
-              <!-- 編集フォーム -->
-              <form action="./edit.php" method="get" class="inline-block">
-                <input type="hidden" name="id" value="<?= htmlspecialchars($record_today['id'], ENT_QUOTES, 'UTF-8'); ?>" placeholder="input comment or comment">
-                <button type="submit" 
-                        class="text-purple-700 hover:text-white border border-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-sm px-4 py-2">
-                  編集
-                </button>
-              </form>
-
-              <!-- 削除フォーム -->
-              <form action="./delete.php" method="post" class="inline-block" 
-                    onsubmit="return confirm('本当に削除しますか？');">
-                <input type="hidden" name="id" value="<?= htmlspecialchars($record_today['id'], ENT_QUOTES, 'UTF-8'); ?>">
-                <button type="submit" 
-                        class="text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2">
-                  削除
-                </button>
-              </form>
+            <!-- 削除フォーム -->
+            <form action="<?= BASE_URL ?>app/delete.php" method="post" class="inline-block" 
+                  onsubmit="return confirm('本当に削除しますか？');">
+              <input type="hidden" name="id" value="<?= htmlspecialchars($record_today['id'], ENT_QUOTES, 'UTF-8'); ?>">
+              <button type="submit" 
+                      class="text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2">
+                削除
+              </button>
+            </div>
           </div>
           <?php else: ?>
             <p class="text-gray-500">今日の学習記録はありません。</p>
           <?php endif; ?>
         </div>
-      </div>
 
 
             <!-- 学習記録一覧 -->
@@ -145,8 +144,9 @@ WHERE DATE(post_date) = CURDATE();
       <!-- 学習記録一覧 -->
       <div class="p-10">
         <h2 class="text-lg font-bold mb-4">今週</h2>
-        <div class="grid grid-cols-3 gap-4">
-        <?php foreach($weekly_records as $weekly_record){ ?>
+        <!-- 昨日・今週・一か月前も同様に以下のように修正 -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <?php foreach($weekly_records as $weekly_record){ ?>
           <div class="bg-white border border-gray-200 p-4 rounded-2xl shadow">
               <ul class="mb-4">
                 <li>ID: <?= htmlspecialchars($weekly_record['id'], ENT_QUOTES, 'UTF-8'); ?></li>
@@ -174,42 +174,7 @@ WHERE DATE(post_date) = CURDATE();
                 </button>
               </form>
           </div>
-        <?php } ?>
-        </div>
-      </div>
-            <!-- 学習記録一覧 -->
-      <div class="p-10">
-        <h2 class="text-lg font-bold mb-4">一か月前</h2>
-        <div class="grid grid-cols-3 gap-4">
-        <?php foreach($weekly_records as $weekly_record){ ?>
-          <div class="bg-white border border-gray-200 p-4 rounded-2xl shadow">
-              <ul class="mb-4">
-                <li>ID: <?= htmlspecialchars($weekly_record['id'], ENT_QUOTES, 'UTF-8'); ?></li>
-                <li>日付: <?= htmlspecialchars($weekly_record['post_date'], ENT_QUOTES, 'UTF-8'); ?></li>
-                <li>カテゴリー: <?= htmlspecialchars($weekly_record['category'], ENT_QUOTES, 'UTF-8'); ?></li>
-                <li>コメント: <?= nl2br(htmlspecialchars($weekly_record['comment'], ENT_QUOTES, 'UTF-8')); ?></li>
-              </ul>
-
-              <!-- 編集フォーム -->
-              <form action="./edit.php" method="get" class="inline-block">
-                <input type="hidden" name="id" value="<?= htmlspecialchars($weekly_record['id'], ENT_QUOTES, 'UTF-8'); ?>">
-                <button type="submit" 
-                        class="text-purple-700 hover:text-white border border-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-sm px-4 py-2">
-                  編集
-                </button>
-              </form>
-
-              <!-- 削除フォーム -->
-              <form action="./delete.php" method="post" class="inline-block" 
-                    onsubmit="return confirm('本当に削除しますか？');">
-                <input type="hidden" name="id" value="<?= htmlspecialchars($weekly_record['id'], ENT_QUOTES, 'UTF-8'); ?>">
-                <button type="submit" 
-                        class="text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2">
-                  削除
-                </button>
-              </form>
-          </div>
-        <?php } ?>
+          <?php } ?>
         </div>
       </div>
       <?php require_once("footer.php") ?>

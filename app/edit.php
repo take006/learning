@@ -27,7 +27,7 @@ try {
 }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -41,7 +41,7 @@ try {
     <section class="flex flex-col justify-center">
     <div class="flex justify-center min-h-screen">
       <h2>Edit</h2>
-      <form action="./update.php" method="post" class="w-1/2">
+      <form action="<?= BASE_URL ?>app/update.php" method="post" class="w-1/2">
         <input type="hidden" name="id" value="<?= htmlspecialchars($learning['id'], ENT_QUOTES, 'UTF-8'); ?>">
 
         <label for="post_date" class="block mb-2 text-sm font-medium text-gray-900">日付</label>

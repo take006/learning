@@ -48,16 +48,17 @@ $total_pages = ceil($total / $limit);
       <!-- 学習記録一覧 -->
       <div class="p-10">
         <h2 class="text-2xl font-bold mb-10 text-center">学習記録一覧</h2>
-        <div class="grid grid-cols-2 gap-4">
-        <?php foreach($records as $record){ ?>
-          <div class="bg-white border border-gray-200 p-4 rounded-2xl shadow">
+
+        <!-- grid-colsをレスポンシブ対応に変更 -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <?php foreach($records as $record){ ?>
+            <div class="bg-white border border-gray-200 p-4 rounded-2xl shadow">
               <ul class="mb-4">
                 <li>ID: <?= htmlspecialchars($record['id'], ENT_QUOTES, 'UTF-8'); ?></li>
                 <li>日付: <?= htmlspecialchars($record['post_date'], ENT_QUOTES, 'UTF-8'); ?></li>
                 <li>カテゴリー: <?= htmlspecialchars($record['category'], ENT_QUOTES, 'UTF-8'); ?></li>
                 <li>コメント: <?= nl2br(htmlspecialchars($record['comment'], ENT_QUOTES, 'UTF-8')); ?></li>
               </ul>
-
               <!-- 編集フォーム -->
               <form action="<?= BASE_URL ?>app/edit.php" method="get" class="inline-block">
                 <input type="hidden" name="id" value="<?= htmlspecialchars($record['id'], ENT_QUOTES, 'UTF-8'); ?>">
@@ -76,17 +77,17 @@ $total_pages = ceil($total / $limit);
                   削除
                 </button>
               </form>
-          </div>
-        <?php } ?>
+            </div>
+          <?php } ?>
         </div>
       </div>
+      <!-- ページネーション -->
       <div>
-        <!-- ページネーション -->
-      <div class="flex justify-center space-x-2 mt-4">
-        <?php for ($i = 1; $i <= $total_pages; $i++): ?>
-        <a href="?page=<?= $i ?>" class="px-3 py-1 bg-gray-200 rounded hover:bg-gray-300"><?= $i ?></a>
-        <?php endfor; ?>
-      </div>
+        <div class="flex justify-center space-x-2 mt-4">
+          <?php for ($i = 1; $i <= $total_pages; $i++): ?>
+          <a href="?page=<?= $i ?>" class="px-3 py-1 bg-gray-200 rounded hover:bg-gray-300"><?= $i ?></a>
+          <?php endfor; ?>
+        </div>
       </div>
       <?php require_once("footer.php") ?>
     </section>
