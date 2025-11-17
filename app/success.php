@@ -13,7 +13,7 @@ require_once __DIR__ . '/../config/config.php';
     // JavaScriptで5秒後にリダイレクト
     setTimeout(() => {
       window.location.href = "index.php";
-    }, 3000);
+    }, 1500);
   </script>
 </head>
 <body>

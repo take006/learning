@@ -9,11 +9,11 @@ try {
   ];
 
 
-$pdo = getPDO();  
-$sql = "SELECT id, post_date, category, comment
-FROM learning_history
-WHERE DATE(post_date) = CURDATE();
-";
+  $pdo = getPDO();  
+  $sql = "SELECT id, post_date, category, comment
+  FROM learning_history
+  WHERE DATE(post_date) = CURDATE();
+  ";
   $ps = $pdo->prepare($sql);
   $ps->execute();
   $record_today = $ps->fetch();
@@ -26,12 +26,8 @@ WHERE DATE(post_date) = CURDATE();
   $ps->execute();
   $learning_yesterday = $ps->fetch();
 
-  // $week_before = date('Y-m-d', strtotime('-7 day'));
-  // $sql = "SELECT * FROM learning_history ORDER BY post_date DESC LIMIT :week_before OFFSET :yesterday";
-  $sql = "SELECT * FROM learning_history WHERE post_date >= DATE_SUB(NOW(), INTERVAL 7 DAY) ORDER BY post_date ASC";
+  $sql = "SELECT * FROM learning_history WHERE post_date >= DATE_SUB(NOW(), INTERVAL 7 DAY) ORDER BY post_date DESC";
   $ps = $pdo->prepare($sql);
-  // $ps->bindValue(':limit', $week_before, PDO::PARAM_STR);
-  // $ps->bindValue(':offset', $yesterday, PDO::PARAM_STR);
   $ps->execute();
   $weekly_records = $ps->fetchAll(PDO::FETCH_ASSOC);
 
