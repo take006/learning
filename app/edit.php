@@ -46,10 +46,10 @@ try {
       <form action="<?= BASE_URL ?>app/update.php" method="post" class="flex flex-col">
         <input type="hidden" name="id" value="<?= htmlspecialchars($learning['id'], ENT_QUOTES, 'UTF-8'); ?>">
 
-        <label for="post_date" class="block mb-2 text-sm font-medium text-gray-900">日付</label>
-        <input type="date" id="post_date" name="post_date"
-          value="<?= htmlspecialchars(date('Y-m-d', strtotime($learning['post_date'])), ENT_QUOTES, 'UTF-8'); ?>"
-          class="border border-gray-300 w-full mb-4 p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-300">
+<label for="post_date" class="block mb-2 text-sm font-medium text-gray-900">日付</label>
+<input type="datetime-local" id="post_date" name="post_date"
+  value="<?= htmlspecialchars(date('Y-m-d\TH:i', strtotime($learning['post_date'] ?? '')), ENT_QUOTES, 'UTF-8'); ?>"
+  class="border border-gray-300 w-full mb-4 p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-300">
 
         <label for="category" class="block mb-2 text-sm font-medium text-gray-900">カテゴリー</label>  
         <input type="text" id="category" name="category" 
