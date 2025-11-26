@@ -13,8 +13,7 @@ try {
   $pdo = getPDO();  
   $sql = "SELECT id, post_date, category, comment, study_minutes
   FROM learning_history
-  WHERE DATE(post_date) = CURDATE();
-  ";
+  WHERE DATE(post_date) = CURDATE()";
   $ps = $pdo->prepare($sql);
   $ps->execute();
   $record_today = $ps->fetch();
