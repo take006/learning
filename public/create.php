@@ -1,4 +1,7 @@
-<?php require_once __DIR__ . '/../config/config.php'; ?>
+<?php
+require_once __DIR__ . '/../config/config.php';
+require_once __DIR__ . '/../app/includes/functions.php';
+?>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -10,17 +13,21 @@
   <link rel="stylesheet" href="reset.css">
 </head>
 <body class="bg-gray-50 min-h-screen flex flex-col">
-  <?php include_once './header.php' ?>
+  <?php include_once __DIR__  . '/../app/views/header.php' ?>
   <main class="flex-1">
     <section class="border border-gray-300 p-4 my-4 rounded w-full flex flex-col items-center">
       <!-- 新規作成フォーム -->
       <div class="p-6 w-full md:w-2/3 lg:w-1/2">
         <div class="flex flex-col justify-center border border-gray-200 bg-white p-6 my-4 rounded-2xl shadow">
-          <form action="<?= BASE_URL ?>app/create.php" method="post">
+          <form action="<?= BASE_URL ?>app/controllers/store.php" method="post">
             <h2 class="text-xl font-bold mb-6 text-center text-gray-800">新規作成</h2>
 
             <label for="post_date" class="block mb-2 text-sm font-medium text-gray-900">日付</label>
             <input type="datetime-local" name="post_date" id="post_date"
+                   class="border border-gray-300 w-full mb-4 p-2 rounded focus:outline-none focus:ring-2 focus:ring-green-400">
+
+            <label for="study_minutes" class="block mb-2 text-sm font-medium text-gray-900">学習時間</label>
+            <input type="number" name="study_minutes" id="study_minutes"
                    class="border border-gray-300 w-full mb-4 p-2 rounded focus:outline-none focus:ring-2 focus:ring-green-400">
 
             <label for="category" class="block mb-2 text-sm font-medium text-gray-900">カテゴリー</label>
@@ -44,6 +51,6 @@
       </div>
     </section>
   </main>
-  <?php include_once './footer.php' ?>
+  <?php require_once __DIR__ .  '/../app/views/footer.php' ?>
 </body>
 </html>

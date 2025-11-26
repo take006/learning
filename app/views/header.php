@@ -17,9 +17,9 @@
 
     <!-- ナビゲーションメニュー -->
     <nav id="nav-menu" class="d-none d-md-flex flex-column flex-md-row text-center mt-3 mt-md-0">
-      <a class="nav-link gradient-text fw-semibold" href="<?= BASE_URL ?>app/archive.php">一覧</a>
-      <a class="nav-link gradient-text fw-semibold" href="<?= BASE_URL ?>app/newData.php">新規作成</a>
-      <a class="nav-link gradient-text fw-semibold" href="<?= BASE_URL ?>app/graph.php">グラフ</a>
+      <a class="nav-link gradient-text fw-semibold" href="<?= BASE_URL ?>public/archive.php">一覧</a>
+      <a class="nav-link gradient-text fw-semibold" href="<?= BASE_URL ?>public/create.php">新規作成</a>
+      <a class="nav-link gradient-text fw-semibold" href="<?= BASE_URL ?>public/graph.php">グラフ</a>
       <span class="nav-link text-secondary disabled">カレンダー</span>
     </nav>
   </div>
