@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/../config/config.php';
+require_once __DIR__ . '/../app/includes/functions.php';
 
   $id = (int)filter_input(INPUT_GET, "id");
   if($id === ""){
@@ -16,11 +17,11 @@ require_once __DIR__ . '/../config/config.php';
 
   try {
     $pdo = getPDO();
-  $sql = "select id, post_date, category, comment from learning_history where id = :id";
-  $ps = $pdo->prepare($sql);
-  $ps->bindValue(":id", $id, PDO::PARAM_INT);
-  $ps->execute();
-  $learning = $ps->fetch();
+    $sql = "select id, post_date, category, comment from learning_history where id = :id";
+    $ps = $pdo->prepare($sql);
+    $ps->bindValue(":id", $id, PDO::PARAM_INT);
+    $ps->execute();
+    $learning = $ps->fetch();
   } catch (PDOException $e){
     error_log("PDOException:" . $e->getMessage());
     header("Location:error.php");
@@ -47,10 +48,10 @@ require_once __DIR__ . '/../config/config.php';
         <h2>details redord</h2>
         <div class="bg-gray-100 p-4 my-4 rounded-4xl w-1/3 shadow-gray-100">
             <ul>
-            <li><?= htmlspecialchars($learning['id']) ?></li>
-            <li><?= htmlspecialchars( $learning['post_date']) ?></li>
-            <li><?= htmlspecialchars($learning['category']) ?></li>
-            <li><?= htmlspecialchars($learning['comment']) ?></li>
+            <li><?= h($learning['id']) ?></li>
+            <li><?= h( $learning['post_date']) ?></li>
+            <li><?= h($learning['category']) ?></li>
+            <li><?= h($learning['comment']) ?></li>
             </ul>
         </div>
       </div>

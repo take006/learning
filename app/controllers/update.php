@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/../config/config.php';
+require_once __DIR__ . '/../../config/config.php';
 $post_date = (string)filter_input(INPUT_POST, "post_date");
 if($post_date === ""){
   error_log("Validation Check: post_date を入力してください") ;

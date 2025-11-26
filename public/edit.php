@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/../config/config.php';
+require_once __DIR__ . '/../app/includes/functions.php';
 try {
   $options = [
     PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
@@ -36,20 +37,19 @@ try {
   <link rel="stylesheet" href="reset.css">
 </head>
 <body>
-  <?php include_once './header.php' ?>
+  <?php include_once '../views/header.php' ?>
   <main>
 <section class="flex flex-col justify-center">
   <div class="flex justify-center min-h-screen items-center px-4">
     <div class="w-full md:w-2/3 lg:w-1/2 bg-white border border-gray-200 p-6 rounded-2xl shadow">
       <h2 class="text-2xl font-bold mb-6 text-center text-gray-800">編集</h2>
-
-      <form action="<?= BASE_URL ?>app/update.php" method="post" class="flex flex-col">
+      <form action="<?= BASE_URL ?>app/controllers/update.php" method="post" class="flex flex-col">
         <input type="hidden" name="id" value="<?= htmlspecialchars($learning['id'], ENT_QUOTES, 'UTF-8'); ?>">
 
-<label for="post_date" class="block mb-2 text-sm font-medium text-gray-900">日付</label>
-<input type="datetime-local" id="post_date" name="post_date"
-  value="<?= htmlspecialchars(date('Y-m-d\TH:i', strtotime($learning['post_date'] ?? '')), ENT_QUOTES, 'UTF-8'); ?>"
-  class="border border-gray-300 w-full mb-4 p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-300">
+        <label for="post_date" class="block mb-2 text-sm font-medium text-gray-900">日付</label>
+        <input type="datetime-local" id="post_date" name="post_date"
+          value="<?= htmlspecialchars(date('Y-m-d\TH:i', strtotime($learning['post_date'] ?? '')), ENT_QUOTES, 'UTF-8'); ?>"
+          class="border border-gray-300 w-full mb-4 p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-300">
 
         <label for="category" class="block mb-2 text-sm font-medium text-gray-900">カテゴリー</label>  
         <input type="text" id="category" name="category" 
@@ -78,7 +78,7 @@ try {
     </div>
   </div>
 </section>
-
   </main>
+    <?php include_once '../views/footer.php' ?>
 </body>
 </html>

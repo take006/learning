@@ -1,5 +1,7 @@
 <?php
 require_once __DIR__ . '/../config/config.php';
+require_once __DIR__ . '/../app/includes/functions.php';
+
 try {
 $pdo = getPDO();
 $limit = 10;
@@ -42,7 +44,7 @@ $total_pages = ceil($total / $limit);
   <link rel="stylesheet" href="reset.css">
 </head>
 <body class="bg-gray-50">
-  <?php include_once './header.php' ?>
+  <?php include_once __DIR__ .'/../app/views/header.php' ?>
   <main>
     <section id="main-wrapper" class="flex flex-col justify-center min-h-screen">
       <!-- 学習記録一覧 -->
@@ -89,7 +91,7 @@ $total_pages = ceil($total / $limit);
           <?php endfor; ?>
         </div>
       </div>
-      <?php require_once("footer.php") ?>
+  <?php include_once __DIR__ .'/../app/views/footer.php' ?>
     </section>
   </main>
 </body>

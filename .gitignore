@@ -21,3 +21,8 @@ db/
 
 .vscode/
 MEMO.md
+
+signin.php
+signup.php
+signin_post.php
+signup _post.php

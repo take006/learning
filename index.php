@@ -1,1 +1,1 @@
-<?php require __DIR__ . '/app/index.php';
+<?php require __DIR__ . '/public/index.php';
