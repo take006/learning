@@ -74,8 +74,8 @@ try {
             </p>
             <ul class="p-0">
               <li class="font-bold"><?= h($record_today['category']); ?></li>
-              <li><?= h($record_today['study_minutes']); ?>分</li>
-              <li><?= nl2br(h($record_today['comment'])); ?></li>
+              <li class="font-bold"><?= h($record_today['study_minutes']); ?>分</li>
+              <li class="py-2"><?= nl2br(h($record_today['comment'])); ?></li>
             </ul>
             <!-- 編集フォーム -->
             <form action="<?= BASE_URL ?>public/edit.php" method="get" class="inline-block">
@@ -116,8 +116,8 @@ try {
                 </p>
                 <ul class="p-0">
                   <li class="font-bold"><?= h($yesterday['category']); ?></li>
-                  <li><?= h($yesterday['study_minutes']); ?>分</li>
-                  <li><?= nl2br(h($yesterday['comment'])); ?></li>
+                  <li class="font-bold"><?= h($yesterday['study_minutes']); ?>分</li>
+                  <li class="py-2"><?= nl2br(h($yesterday['comment'])); ?></li>
                 </ul>
 
                 <!-- 編集フォーム -->
@@ -164,8 +164,8 @@ try {
               </p>
               <ul class="mb-4 p-0">
                 <li class="font-bold"><?= h($weekly_record['category']); ?></li>
-                <li><?= h($weekly_record['study_minutes']); ?></li>
-                <li><?= nl2br(h($weekly_record['comment'])); ?></li>
+                <li class="font-medium"><?= h($weekly_record['study_minutes']); ?>分</li>
+                <li class="py-2"><?= nl2br(h($weekly_record['comment'])); ?></li>
               </ul>
 
               <!-- 編集フォーム -->

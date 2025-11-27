@@ -31,7 +31,7 @@ try {
 <html lang="ja">
   <?php require_once __DIR__  . '/../app/views/_head_view.php'; ?>
 <body>
-  <?php include_once '../views/header.php' ?>
+  <?php require_once __DIR__ .  '/../app/views/header.php' ?>
   <main>
 <section class="flex flex-col justify-center">
   <div class="flex justify-center min-h-screen items-center px-4">
@@ -77,6 +77,6 @@ try {
   </div>
 </section>
   </main>
-    <?php include_once '../views/footer.php' ?>
+  <?php require_once __DIR__ .  '/../app/views/footer.php' ?>
 </body>
 </html>

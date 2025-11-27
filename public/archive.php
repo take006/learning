@@ -49,14 +49,14 @@ $total_pages = ceil($total / $limit);
           <?php foreach($records as $record){ ?>
             <div class="bg-white border border-gray-200 p-4 rounded-2xl shadow">
               <ul class="mb-4">
-                <li>ID: <?= htmlspecialchars($record['id'], ENT_QUOTES, 'UTF-8'); ?></li>
-                <li>日付: <?= htmlspecialchars($record['post_date'], ENT_QUOTES, 'UTF-8'); ?></li>
-                <li>カテゴリー: <?= htmlspecialchars($record['category'], ENT_QUOTES, 'UTF-8'); ?></li>
-                <li>コメント: <?= nl2br(htmlspecialchars($record['comment'], ENT_QUOTES, 'UTF-8')); ?></li>
+                <li><?= h($record['post_date']); ?></li>
+                <li><?= h($record['study_minutes']); ?>分</li>
+                <li>カテゴリー: <?= h($record['category']); ?></li>
+                <li><?= nl2br(h($record['comment'])); ?></li>
               </ul>
               <!-- 編集フォーム -->
               <form action="<?= BASE_URL ?>app/edit.php" method="get" class="inline-block">
-                <input type="hidden" name="id" value="<?= htmlspecialchars($record['id'], ENT_QUOTES, 'UTF-8'); ?>">
+                <input type="hidden" name="id" value="<?= h($record['id']); ?>">
                 <button type="submit" 
                         class="text-purple-700 hover:text-white border border-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-sm px-4 py-2">
                   編集
@@ -66,7 +66,7 @@ $total_pages = ceil($total / $limit);
               <!-- 削除フォーム -->
               <form action="<?= BASE_URL ?>app/delete.php" method="post" class="inline-block" 
                     onsubmit="return confirm('本当に削除しますか？');">
-                <input type="hidden" name="id" value="<?= htmlspecialchars($record['id'], ENT_QUOTES, 'UTF-8'); ?>">
+                <input type="hidden" name="id" value="<?= h($record['id']); ?>">
                 <button type="submit" 
                         class="text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2">
                   削除
