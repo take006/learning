@@ -5,20 +5,13 @@ require_once __DIR__ . '/../app/includes/functions.php';
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Success</title>
-
-  <script src="https://cdn.tailwindcss.com"></script>
-
+  <?php require_once __DIR__  . '/../app/views/_head_view.php'; ?>
   <!-- 1.5秒後にリダイレクト -->
   <script>
     setTimeout(() => {
       window.location.href = "index.php";
     }, 1500);
   </script>
-</head>
-
 <body class="bg-gray-50">
 
   <!-- 配置制御コンテナ -->
