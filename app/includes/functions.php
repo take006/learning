@@ -45,7 +45,7 @@ function sign_in($account){
     $_SESSION['session_account'] = $account;
 }
 function is_sign_in(){
-    return isset($_SESSION['SESSION_ACCOUNT']);
+    return isset($_SESSION['session_account']);
 } 
 function set_message($message){
     $_SESSION['SESSION_MESSAGE'] = $message;

@@ -1,6 +1,3 @@
-<!-- Bootstrap CSSのみ（JS制御するのでBootstrapのJSは不要） -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
 <header class="navbar navbar-expand-md bg-white shadow-sm py-3">
   <div class="container-fluid">
     <!-- ロゴ -->

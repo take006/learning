@@ -17,14 +17,8 @@ $total_study_minutes = $ps->fetchColumn();
 }
 ?>
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Graph</title>
-  <!-- TailwindCSS CDN（開発用。ビルド時はローカルビルド推奨） -->
-  <script src="https://cdn.tailwindcss.com"></script>
-</head>
+<html lang="ja">
+  <?php require_once __DIR__  . '/../app/views/_head_view.php'; ?>
 <body>
   <?php require_once __DIR__ . '/../app/views/header.php'; ?>
   <h1 class="text-4xl">Graph Page</h1>

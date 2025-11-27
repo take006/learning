@@ -44,14 +44,7 @@ try {
 
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Learning-App</title>
-  <!-- TailwindCSS CDN（開発用。ビルド時はローカルビルド推奨） -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="reset.css">
-</head>
+  <?php require_once __DIR__  . '/../app/views/_head_view.php'; ?>
 <body class="bg-gray-50">
   <?php require_once __DIR__  . '/../app/views/header.php'; ?>
   <main>
@@ -121,7 +114,7 @@ try {
                 <p class="max-w-7xl mx-auto py-1 px-4 text-right text-sm text-gray-500">
                   <?= date('Y年n月j日 G時i分', strtotime($yesterday['post_date'])) ?>
                 </p>
-                <ul p-0>
+                <ul class="p-0">
                   <li class="font-bold"><?= h($yesterday['category']); ?></li>
                   <li><?= h($yesterday['study_minutes']); ?>分</li>
                   <li><?= nl2br(h($yesterday['comment'])); ?></li>
