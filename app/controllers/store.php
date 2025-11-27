@@ -35,7 +35,12 @@ if(mb_strlen($comment) > 255){
   header("Location:error.php");
   exit();
 }
-
+$study_minutes = filter_input(INPUT_POST, "study_minutes", FILTER_VALIDATE_INT);
+if($study_minutes === ""){
+  error_log("Validate:study_minutes is required");
+  header("Location:error.php");
+  exit();
+}
 
 try {
  $pdo = getPDO();
