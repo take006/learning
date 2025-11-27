@@ -78,7 +78,7 @@ try {
               <li><?= nl2br(h($record_today['comment'])); ?></li>
             </ul>
             <!-- 編集フォーム -->
-            <form action="<?= BASE_URL ?>app/edit.php" method="get" class="inline-block">
+            <form action="<?= BASE_URL ?>public/edit.php" method="get" class="inline-block">
               <input type="hidden" name="id" value="<?= h($record_today['id']); ?>" placeholder="input comment or comment">
               <button type="submit" 
                       class="text-purple-700 hover:text-white border border-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-sm px-4 py-2">
@@ -87,7 +87,7 @@ try {
             </form>
 
             <!-- 削除フォーム -->
-            <form action="<?= BASE_URL ?>app/delete.php" method="post" class="inline-block" 
+            <form action="<?= BASE_URL ?>public/delete.php" method="post" class="inline-block" 
                   onsubmit="return confirm('本当に削除しますか？');">
               <input type="hidden" name="id" value="<?= h($record_today['id']); ?>">
               <button type="submit" 
@@ -121,7 +121,7 @@ try {
                 </ul>
 
                 <!-- 編集フォーム -->
-                <form action="<?= BASE_URL ?>app/edit.php" method="get" class="inline-block">
+                <form action="<?= BASE_URL ?>public/edit.php" method="get" class="inline-block">
                   <input type="hidden" name="id" value="<?= h($yesterday['id']); ?>">
                   <button type="submit"
                     class="text-purple-700 hover:text-white border border-purple-700 hover:bg-purple-800
@@ -131,7 +131,7 @@ try {
                 </form>
 
                 <!-- 削除フォーム -->
-                <form action="<?= BASE_URL ?>app/delete.php" method="post" class="inline-block"
+                <form action="<?= BASE_URL ?>public/delete.php" method="post" class="inline-block"
                       onsubmit="return confirm('本当に削除しますか？');">
                   <input type="hidden" name="id" value="<?= h($yesterday['id']); ?>">
                   <button type="submit"
@@ -169,7 +169,7 @@ try {
               </ul>
 
               <!-- 編集フォーム -->
-              <form action="<?= BASE_URL ?>app/edit.php" method="get" class="inline-block">
+              <form action="<?= BASE_URL ?>public/edit.php" method="get" class="inline-block">
                 <input type="hidden" name="id" value="<?= h($weekly_record['id']); ?>">
                 <button type="submit" 
                         class="text-purple-700 hover:text-white border border-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-sm px-4 py-2">
@@ -178,7 +178,7 @@ try {
               </form>
 
               <!-- 削除フォーム -->
-              <form action="<?= BASE_URL ?>app/delete.php" method="post" class="inline-block" 
+              <form action="<?= BASE_URL ?>public/delete.php" method="post" class="inline-block" 
                     onsubmit="return confirm('本当に削除しますか？');">
                 <input type="hidden" name="id" value="<?= h($weekly_record['id']); ?>">
                 <button type="submit" 
