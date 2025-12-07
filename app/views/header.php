@@ -11,14 +11,20 @@
       <span class="menu-bar"></span>
       <span class="menu-bar"></span>
     </button>
-
-    <!-- ナビゲーションメニュー -->
-    <nav id="nav-menu" class="d-none d-md-flex flex-column flex-md-row text-center mt-3 mt-md-0">
-      <a class="nav-link gradient-text fw-semibold" href="<?= BASE_URL ?>public/archive.php">一覧</a>
-      <a class="nav-link gradient-text fw-semibold" href="<?= BASE_URL ?>public/create.php">新規作成</a>
-      <a class="nav-link gradient-text fw-semibold" href="<?= BASE_URL ?>public/graph.php">グラフ</a>
-      <span class="nav-link text-secondary disabled">カレンダー</span>
-    </nav>
+    <?php if(is_sign_in()){ ?>
+      <!-- ナビゲーションメニュー -->
+      <nav id="nav-menu" class="d-none d-md-flex flex-column flex-md-row text-center mt-3 mt-md-0">
+        <a class="nav-link gradient-text fw-semibold" href="<?= BASE_URL ?>public/archive.php">一覧</a>
+        <a class="nav-link gradient-text fw-semibold" href="<?= BASE_URL ?>public/create.php">新規作成</a>
+        <a class="nav-link gradient-text fw-semibold" href="<?= BASE_URL ?>public/graph.php">グラフ</a>
+        <span class="nav-link text-secondary disabled">カレンダー</span>
+      </nav>
+    <?php } else { ?>
+      <a href="<?= BASE_URL ?>public/signin.php">
+        <button 
+          class="text-white border border-blue-700 bg-blue-700 hover:bg-blue-900 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 transition duration-150 ease-in-out">
+            ログイン</button></a>
+    <?php } ?>
   </div>
 </header>
 

@@ -15,20 +15,22 @@ require_once __DIR__ . '/../app/includes/functions.php';
           <form action="<?= BASE_URL ?>app/controllers/store.php" method="post">
             <h2 class="text-xl font-bold mb-6 text-center text-gray-800">新規作成</h2>
 
-            <label for="post_date" class="block mb-2 text-sm font-medium text-gray-900">日付</label>
+            <label for="post_date" class="block mb-2 text-sm font-medium text-gray-900">日付<span class="text-red-500">*</span></label>
             <input type="datetime-local" name="post_date" id="post_date"
-                   class="border border-gray-300 w-full mb-4 p-2 rounded focus:outline-none focus:ring-2 focus:ring-green-400">
+                   class="border border-gray-300 w-full mb-4 p-2 rounded focus:outline-none focus:ring-2 focus:ring-green-400"
+                   required>
 
-            <label for="study_minutes" class="block mb-2 text-sm font-medium text-gray-900">学習時間</label>
+            <label for="study_minutes" class="block mb-2 text-sm font-medium text-gray-900">学習時間<span class="text-red-500">*</span></label>
             <input type="number" name="study_minutes" id="study_minutes"
-                   class="border border-gray-300 w-full mb-4 p-2 rounded focus:outline-none focus:ring-2 focus:ring-green-400">
+                   class="border border-gray-300 w-full mb-4 p-2 rounded focus:outline-none focus:ring-2 focus:ring-green-400"
+                   required>
 
-            <label for="category" class="block mb-2 text-sm font-medium text-gray-900">カテゴリー</label>
+            <label for="category" class="block mb-2 text-sm font-medium text-gray-900">カテゴリー<span class="text-red-500">*</span></label>
             <input type="text" name="category" id="category"
                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 mb-4 focus:outline-none focus:ring-2 focus:ring-green-400"
                    placeholder="カテゴリーを入力" required>
 
-            <label for="comment" class="block mb-2 text-sm font-medium text-gray-900">コメント</label>
+            <label for="comment" class="block mb-2 text-sm font-medium text-gray-900">コメント<span class="text-red-500">*</span></label>
             <textarea name="comment" id="comment"
                       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 mb-4 min-h-[250px] focus:outline-none focus:ring-2 focus:ring-green-400"
                       placeholder="コメントを入力" required></textarea>

@@ -49,9 +49,9 @@ $total_pages = ceil($total / $limit);
           <?php foreach($records as $record){ ?>
             <div class="bg-white border border-gray-200 p-4 rounded-2xl shadow">
               <ul class="mb-4">
-                <li><?= h($record['post_date']); ?></li>
-                <li><?= h($record['study_minutes']); ?>分</li>
-                <li>カテゴリー: <?= h($record['category']); ?></li>
+                <li class="font-bold"><?= h($record['post_date']); ?></li>
+                <li class="font-bold"><?= h($record['study_minutes']); ?>分</li>
+                <li><?= h($record['category']); ?></li>
                 <li><?= nl2br(h($record['comment'])); ?></li>
               </ul>
               <!-- 編集フォーム -->
