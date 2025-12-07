@@ -1,20 +1,8 @@
 <?php
-require_once __DIR__ . '/../../config/config.php';
-define("MESSAGE_SIGNIN_ERROR", "signin error.");
-
-
-//エスケープ処理
-function h($str){
-  return htmlspecialchars($str, ENT_QUOTES, 'UTF-8');
-}
-
-//CSRFトークン
-function setToken(){
-    $csrf_token = bin2hex(random_bytes(32));
-    $_SESSION['csrf_token'] = $csrf_token;
-
-    return $csrf_token;
-}
+//よく使用するエラーメッセージを事前に定義
+define("MESSAGE_SIGNIN_ERROR", "サインインエラー.");
+define("MESSAGE_SIGNUP_ERROR", "サインアップエラー.");
+define("MESSAGE_DB_CONNECTION_ERROR", "データベース接続エラー.");
 
 // ===========================
 // PDO接続共通関数
@@ -40,6 +28,37 @@ function getPDO() {
     return $pdo;
 }
 
+
+//エスケープ処理
+function h($str){
+  return htmlspecialchars($str, ENT_QUOTES, 'UTF-8');
+}
+
+//CSRFトークン
+function setToken(){
+    $csrf_token = bin2hex(random_bytes(32));
+    $_SESSION['csrf_token'] = $csrf_token;
+
+    return $csrf_token;
+}
+
+//メッセージ
+function set_message($message){
+    $_SESSION['SESSION_MESSAGE'] = $message;
+}
+
+function get_message(){
+    if(isset($_SESSION['SESSION_MESSAGE']) === false ){
+        return false;
+    }
+    $message = $_SESSION['SESSION_MESSAGE'];
+    unset($_SESSION['SESSION_MESSAGE']);
+    return $message;
+}
+
+// ===========================
+// アカウント関数
+// ===========================
 function sign_in($account){
     session_regenerate_id();
     $_SESSION['session_account'] = $account;
@@ -47,8 +66,4 @@ function sign_in($account){
 function is_sign_in(){
     return isset($_SESSION['session_account']);
 } 
-function set_message($message){
-    $_SESSION['SESSION_MESSAGE'] = $message;
-}
-
 ?>
