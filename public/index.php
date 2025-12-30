@@ -55,7 +55,16 @@ try {
                   Login
         </button></a>
       </div>
-
+      <div>
+        <a href="<?= BASE_URL ?>public/graph.php"><button 
+                class="text-blue border border-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 transition duration-150 ease-in-out">
+                  記録
+        </button></a>
+        <a href="<?= BASE_URL ?>public/archive.php"><button 
+                class="text-blue border border-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 transition duration-150 ease-in-out">
+                  一覧
+        </button></a>
+      </div>
       <!-- 今日 -->
       <div class="p-10">
         <h2 class="text-lg font-bold mb-4">today</h2>

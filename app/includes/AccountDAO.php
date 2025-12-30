@@ -13,7 +13,7 @@ class AccountDAO {
     return $account;
   }
   public function createAccount($name, $hashed_password){
-    $sql = "INSERT INTO accounts(name, hashed_password) VALUES (:name, :hashed_password)";
+    $sql = "INSERT INTO accounts (name, hashed_password) VALUES (:name, :hashed_password)";
     $ps = $this->pdo->prepare($sql);
     $ps->bindValue(":name", $name, PDO::PARAM_STR);
     $ps->bindValue(":hashed_password", $hashed_password, PDO::PARAM_STR);

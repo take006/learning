@@ -4,12 +4,12 @@ session_start();
 require_once __DIR__ . '/../includes/functions.php';
 require_once __DIR__ . '/../includes/AccountDAO.php';
 
-$csrf_token = filter_input(INPUT_POST, "csrf_token");
+$csrf_token = (string)filter_input(INPUT_POST, "csrf_token");
 if(!$csrf_token ||$csrf_token !== $_SESSION['csrf_token']){
   header('Location:' . BASE_URL . 'public/error.php');
   exit();
 }
-$name = filter_input(INPUT_POST, "name");
+$name = (string)filter_input(INPUT_POST, "name");
 if($name === ""){
   header('Location: ' . BASE_URL . 'public/signup.php');
   exit();
@@ -18,7 +18,7 @@ if(mb_strlen($name) > 20){
   header('Location: ' . BASE_URL . 'public/signup.php');
   exit();
 }
-$password = filter_input(INPUT_POST, "password");
+$password = (string)filter_input(INPUT_POST, "password");
 if($password === ""){
   header('Location: ' . BASE_URL . 'public/signup.php');
   exit();
@@ -34,7 +34,7 @@ try{
   $pdo = getPDO();
   $account_dao = new AccountDAO($pdo);
   $account_dao->createAccount($name, $hashed_password);
-  header("Location: signin_success.php");
+  header("Location: signup_success.php");
   
   } catch(PDOException $e) {
     error_log($e->getMessage());
