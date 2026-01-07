@@ -33,6 +33,11 @@ $ps = $pdo->prepare($sql);
 $ps->execute();
 $aws_study_hours = $ps->fetchColumn();
 
+$ps = $pdo->prepare($sql);
+$ps->execute();
+$categories = $ps->fetchAll();
+
+
 } catch(PDOException $e){
   error_log("PDOException:" . $e->getMessage());
   header('Location: error.php');

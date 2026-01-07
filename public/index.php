@@ -10,7 +10,7 @@ try {
   WHERE DATE(post_date) = CURDATE()";
   $ps = $pdo->prepare($sql);
   $ps->execute();
-  $record_today = $ps->fetch();
+  $records_today = $ps->fetchAll();
   
   //昨日
   $yesterday = date('Y-m-d', strtotime('-1 day'));
@@ -68,21 +68,22 @@ try {
       <!-- 今日 -->
       <div class="p-10">
         <h2 class="text-lg font-bold mb-4">today</h2>
-        <?php if (!empty($record_today)): ?>
+        <?php if (!empty($records_today)): ?>
         <!-- grid-colsをレスポンシブ化 -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <?php foreach ($records_today as $today) : ?>
           <div class="bg-white border border-gray-200 p-4 rounded-2xl shadow">
             <p class="max-w-7xl mx-auto py-1 px-4 text-right text-sm text-gray-500">
-              <?= date('Y年n月j日 G時i分', strtotime($record_today['post_date'])) ?>
+              <?= date('Y年n月j日 G時i分', strtotime($today['post_date'])) ?>
             </p>
             <ul class="p-0">
-              <li class="font-bold"><?= h($record_today['category']); ?></li>
-              <li class="font-bold"><?= h($record_today['study_minutes']); ?>分</li>
-              <li class="py-2"><?= nl2br(h($record_today['comment'])); ?></li>
+              <li class="font-bold"><?= h($today['category']); ?></li>
+              <li class="font-bold"><?= h($today['study_minutes']); ?>分</li>
+              <li class="py-2"><?= nl2br(h($today['comment'])); ?></li>
             </ul>
             <!-- 編集フォーム -->
             <form action="<?= BASE_URL ?>public/edit.php" method="get" class="inline-block">
-              <input type="hidden" name="id" value="<?= h($record_today['id']); ?>" placeholder="input comment or comment">
+              <input type="hidden" name="id" value="<?= h($today['id']); ?>" placeholder="input comment or comment">
               <button type="submit" 
                       class="text-purple-700 hover:text-white border border-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-sm px-4 py-2">
                 編集
@@ -99,6 +100,7 @@ try {
               </button>
             </form>
           </div>
+          <?php endforeach; ?>
         </div>
         <?php else: ?>
           <p class="text-gray-500">今日の学習記録はありません。</p>
