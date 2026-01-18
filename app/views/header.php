@@ -1,8 +1,8 @@
 <header class="navbar navbar-expand-md bg-white shadow-sm py-3">
   <div class="container-fluid">
     <!-- ロゴ -->
-    <a class="navbar-brand fw-bold gradient-text" href="<?= BASE_URL ?>">
-      🎮 Learning-Record
+    <a class="navbar-brand fw-bold" href="<?= BASE_URL ?>">
+      <img src="<?= BASE_URL ?>public/assets/images/Learning-Record-001.png" alt="Learning-Record" class="logo-img">
     </a>
 
     <!-- ハンバーガーボタン -->
@@ -97,6 +97,8 @@
   }
 
   .navbar-brand { font-size: 1.5rem; letter-spacing: 1px; white-space: nowrap; }
+
+  .logo-img { height: 40px; width: auto; object-fit: contain; }
 
   /* ハンバーガーボタン */
   #menu-btn {
