@@ -43,28 +43,6 @@ try {
   <?php require_once __DIR__  . '/../app/views/header.php'; ?>
   <main>
     <section id="main-wrapper" class="flex flex-col justify-center min-h-screen">
-      <div>
-        <a href="<?= BASE_URL ?>public/create.php"><button 
-                class="text-white border border-green-700 bg-green-700 hover:bg-green-900 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-2 transition duration-150 ease-in-out">
-                  新規作成
-        </button></a>
-      </div>
-      <div>
-        <a href="<?= BASE_URL ?>public/signin.php"><button 
-                class="text-white border border-green-700 bg-green-700 hover:bg-green-900 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-2 transition duration-150 ease-in-out">
-                  Login
-        </button></a>
-      </div>
-      <div>
-        <a href="<?= BASE_URL ?>public/graph.php"><button 
-                class="text-blue border border-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 transition duration-150 ease-in-out">
-                  記録
-        </button></a>
-        <a href="<?= BASE_URL ?>public/archive.php"><button 
-                class="text-blue border border-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 transition duration-150 ease-in-out">
-                  一覧
-        </button></a>
-      </div>
       <!-- 今日 -->
       <div class="p-10">
         <h2 class="text-lg font-bold mb-4">today</h2>
