@@ -84,7 +84,7 @@ try {
             </form>
 
             <!-- 削除フォーム -->
-            <form action="<?= BASE_URL ?>public/delete.php" method="post" class="inline-block" 
+            <form action="<?= BASE_URL ?>app/controllers/delete.php" method="post" class="inline-block" 
                   onsubmit="return confirm('本当に削除しますか？');">
               <input type="hidden" name="id" value="<?= h($today['id']); ?>">
               <button type="submit" 
@@ -129,7 +129,7 @@ try {
                 </form>
 
                 <!-- 削除フォーム -->
-                <form action="<?= BASE_URL ?>public/delete.php" method="post" class="inline-block"
+                <form action="<?= BASE_URL ?>app/controllers/delete.php" method="post" class="inline-block"
                       onsubmit="return confirm('本当に削除しますか？');">
                   <input type="hidden" name="id" value="<?= h($yesterday['id']); ?>">
                   <button type="submit"
@@ -176,7 +176,7 @@ try {
               </form>
 
               <!-- 削除フォーム -->
-              <form action="<?= BASE_URL ?>public/delete.php" method="post" class="inline-block" 
+              <form action="<?= BASE_URL ?>app/controllers/delete.php" method="post" class="inline-block" 
                     onsubmit="return confirm('本当に削除しますか？');">
                 <input type="hidden" name="id" value="<?= h($weekly_record['id']); ?>">
                 <button type="submit" 

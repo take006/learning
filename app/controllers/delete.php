@@ -1,6 +1,7 @@
 <?php
 
 require_once __DIR__ . '/../../config/config.php';
+require_once __DIR__ . '/../../app/includes/functions.php';
 
 try {
 
@@ -17,7 +18,7 @@ try {
   $ps = $pdo->prepare($sql);
   $ps->bindValue(':id', $id, PDO::PARAM_INT);
   $ps->execute();
-  header("Location: index.php?msg=deleted");
+  header('Location: '. BASE_URL . 'public/deleted.php');
   exit();
 
 } catch (PDOException $e){
