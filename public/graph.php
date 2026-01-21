@@ -6,7 +6,6 @@ try{
 
 $pdo = getPDO();
 $sql = "SELECT SUM(study_minutes) AS total_minutes FROM learning_history";
-
 $ps = $pdo->prepare($sql);
 $ps->execute();
 $total_study_minutes = $ps->fetchColumn();
@@ -57,7 +56,7 @@ $categories = $ps->fetchAll();
     <!-- 合計学習時間 -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
       <div class="bg-white rounded-xl shadow p-6">
-        <p class="text-sm text-gray-500 mb-2">合計学習時間（分）</p>
+        <p class="text-sm text-gray-500 mb-2">累積学習時間（分）</p>
         <p class="text-4xl font-semibold text-indigo-600">
           <?= h($total_study_minutes) ?>
           <span class="text-base font-normal text-gray-600">分</span>
@@ -65,7 +64,7 @@ $categories = $ps->fetchAll();
       </div>
 
       <div class="bg-white rounded-xl shadow p-6">
-        <p class="text-sm text-gray-500 mb-2">合計学習時間（時間）</p>
+        <p class="text-sm text-gray-500 mb-2">累積学習時間（時間）</p>
         <p class="text-4xl font-semibold text-indigo-600">
           <?= h($total_study_hours) ?>
           <span class="text-base font-normal text-gray-600">時間</span>

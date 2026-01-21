@@ -11,6 +11,13 @@ try {
   $ps = $pdo->prepare($sql);
   $ps->execute();
   $records_today = $ps->fetchAll();
+
+  $sql = "SELECT SUM(study_minutes) 
+  AS total_minutes_today FROM learning_history
+  WHERE DATE(post_date) = CURDATE()";
+  $ps = $pdo->prepare($sql);
+  $ps->execute();
+  $total_minutes_today = $ps->fetchColumn() ?? 0;
   
   //昨日
   $yesterday = date('Y-m-d', strtotime('-1 day'));
@@ -21,6 +28,14 @@ try {
   $ps->bindValue(':yesterday', $yesterday, PDO::PARAM_STR);
   $ps->execute();
   $records_yesterday = $ps->fetchAll();
+
+  $sql = "SELECT SUM(study_minutes) 
+  AS total_minutes_yesterday FROM learning_history
+  WHERE DATE(post_date) = :yesterday";
+  $ps = $pdo->prepare($sql);
+  $ps->bindValue(':yesterday', $yesterday, PDO::PARAM_STR);
+  $ps->execute();
+  $total_minutes_yesterday = $ps->fetchColumn() ?? 0;
 
   //1週間前
   $sql = "SELECT * FROM learning_history WHERE post_date >= DATE_SUB(NOW(), INTERVAL 7 DAY) ORDER BY post_date DESC";
@@ -45,7 +60,7 @@ try {
     <section id="main-wrapper" class="flex flex-col justify-center min-h-screen">
       <!-- 今日 -->
       <div class="p-10">
-        <h2 class="text-lg font-bold mb-4">today</h2>
+        <h2 class="text-lg font-bold mb-4">今日：<?= h($total_minutes_today); ?>分</h2>
         <?php if (!empty($records_today)): ?>
         <!-- grid-colsをレスポンシブ化 -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -71,7 +86,7 @@ try {
             <!-- 削除フォーム -->
             <form action="<?= BASE_URL ?>public/delete.php" method="post" class="inline-block" 
                   onsubmit="return confirm('本当に削除しますか？');">
-              <input type="hidden" name="id" value="<?= h($record_today['id']); ?>">
+              <input type="hidden" name="id" value="<?= h($today['id']); ?>">
               <button type="submit" 
                       class="text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2">
                 削除
@@ -87,7 +102,7 @@ try {
 
       <!-- 昨日 -->
       <div class="p-10">
-        <h2 class="text-lg font-bold mb-4">昨日</h2>
+        <h2 class="text-lg font-bold mb-4">昨日：<?= h($total_minutes_yesterday); ?>分</h2>
 
         <?php if (!empty($records_yesterday)) : ?>
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
